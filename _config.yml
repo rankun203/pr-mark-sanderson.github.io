@@ -29,7 +29,7 @@ author:
   location         : "Melbourne, Australia"
   employer         : "RMIT University"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "mark.sanderson@rmit.edu.au" 
 
   # Academic websites
   academia         : # URL
@@ -38,7 +38,7 @@ author:
   impactstory      : # URL
   orcid            : "https://orcid.org/0000-0003-0487-9609"
   semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # URL
   researchgate     : # URL
   scopus           : # URL
 
@@ -52,7 +52,7 @@ author:
 
   # Social media
   artstation       : # Username
-  bluesky          : "IR_oldie" # Replace this with you Bluesky username
+  bluesky          : "IR_oldie"
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
@@ -61,7 +61,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "marksandersonresearcher"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
