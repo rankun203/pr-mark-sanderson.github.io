@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a Dean for Research and Innovation in the STEM College of RMIT University. I am also a Professor of Information Retrieval (IR).
+I am a Dean for Research and Innovation in the STEM College of RMIT University. I am also a Professor of Information Retrieval (IR). This is my personal website.
 
 A data-driven personal website
 ======
