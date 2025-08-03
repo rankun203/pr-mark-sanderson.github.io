@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Mark Sanderson / Personal site"
+title                    : "Mark Sanderson's personal site"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "personal description"
