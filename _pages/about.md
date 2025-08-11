@@ -7,8 +7,6 @@ redirect_from:
   - /about.html
 ---
 
-I am a Dean for Research and Innovation in the STEM College of RMIT University. I am also a Professor of Information Retrieval (IR). This is my personal website.
+I am a Dean for Research and Innovation in the STEM College of RMIT University. I am also a Professor of Information Retrieval (IR). This is my personal website, you can find my academic profile at [RMIT University](https://academics.rmit.edu.au/mark-sanderson)
 
-A data-driven personal website
-======
-Placeholder text.
+
