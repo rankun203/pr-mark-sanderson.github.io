@@ -16,8 +16,7 @@
 # TODO: Merge this with the existing TSV parsing solution
 
 
-from pybtex.database.input import bibtex
-import pybtex.database.input.bibtex 
+from pybtex.database.input import bibtex, BibliographyData
 from time import strptime
 import string
 import html
@@ -27,21 +26,26 @@ import re
 #todo: incorporate different collection types rather than a catch all publications, requires other changes to template
 publist = {
     "proceeding": {
-        "file" : "proceedings.bib",
+        "file" : "_publications/proceedings.bib",
         "venuekey": "booktitle",
         "venue-pretext": "In the proceedings of ",
+        "category": "conferences",
         "collection" : {"name":"publications",
                         "permalink":"/publication/"}
-        
     },
-    "journal":{
-        "file": "pubs.bib",
-        "venuekey" : "journal",
-        "venue-pretext" : "",
-        "collection" : {"name":"publications",
-                        "permalink":"/publication/"}
-    } 
+    # "journal":{
+    #     "file": "pubs.bib",
+    #     "venuekey" : "journal",
+    #     "venue-pretext" : "",
+    #     "category": "manuscripts",
+    #     "collection" : {"name":"publications",
+    #                     "permalink":"/publication/"}
+    # } 
 }
+
+# Create files/bib directory if it doesn't exist
+bib_dir = "./files/bib"
+os.makedirs(bib_dir, exist_ok=True)
 
 html_escape_table = {
     "&": "&amp;",
@@ -116,6 +120,8 @@ for pubsource in publist:
             md = "---\ntitle: \""   + html_escape(b["title"].replace("{", "").replace("}","").replace("\\","")) + '"\n'
             
             md += """collection: """ +  publist[pubsource]["collection"]["name"]
+            
+            md += "\ncategory: " + publist[pubsource]["category"]
 
             md += """\npermalink: """ + publist[pubsource]["collection"]["permalink"]  + html_filename
             
@@ -128,6 +134,19 @@ for pubsource in publist:
             md += "\ndate: " + str(pub_date) 
 
             md += "\nvenue: '" + html_escape(venue) + "'"
+            
+            # Create individual bib file and add bibtexurl
+            file_key = re.sub(r'[^a-zA-Z0-9_-]', '', clean_title)
+            bib_filename = f"{file_key}.bib"
+            bib_filepath = os.path.join(bib_dir, bib_filename)
+            
+            # Create a new database with just this entry
+            single_entry_db = BibliographyData()
+            single_entry_db.entries[bib_id] = bibdata.entries[bib_id]
+            single_entry_db.to_file(bib_filepath)
+            
+            # Add bibtexurl to markdown
+            md += f"\nbibtexurl: '/files/bib/{bib_filename}'"
             
             url = False
             if "url" in b.keys():
@@ -151,7 +170,7 @@ for pubsource in publist:
 
             md_filename = os.path.basename(md_filename)
 
-            with open("../_publications/" + md_filename, 'w', encoding="utf-8") as f:
+            with open("./_publications/" + md_filename, 'w', encoding="utf-8") as f:
                 f.write(md)
             print(f'SUCCESSFULLY PARSED {bib_id}: \"', b["title"][:60],"..."*(len(b['title'])>60),"\"")
         # field may not exist for a reference
