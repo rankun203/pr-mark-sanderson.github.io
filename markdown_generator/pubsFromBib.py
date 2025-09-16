@@ -33,14 +33,14 @@ publist = {
         "collection" : {"name":"publications",
                         "permalink":"/publication/"}
     },
-    # "journal":{
-    #     "file": "pubs.bib",
-    #     "venuekey" : "journal",
-    #     "venue-pretext" : "",
-    #     "category": "manuscripts",
-    #     "collection" : {"name":"publications",
-    #                     "permalink":"/publication/"}
-    # } 
+    "journal":{
+        "file": "_publications/journals.bib",
+        "venuekey" : "journal",
+        "venue-pretext" : "",
+        "category": "manuscripts",
+        "collection" : {"name":"publications",
+                        "permalink":"/publication/"}
+    } 
 }
 
 # Create files/bib directory if it doesn't exist
